@@ -7,11 +7,11 @@ interface CardPostagensProps {
 
 function CardPostagem({ postagem }: CardPostagensProps) {
     return (
-        <div className='border-rose-900 border 
+        <div className='border-orange-100 border 
             flex flex-col rounded overflow-hidden justify-between'>
 
             <div>
-                <div className="flex w-full bg-rose-400 py-2 px-4 items-center gap-4">
+                <div className="flex w-full bg-orange-200 py-2 px-4 items-center gap-4">
                     <img
                         src={postagem.usuario?.foto}
                         className='h-12 rounded-full'
@@ -32,12 +32,12 @@ function CardPostagem({ postagem }: CardPostagensProps) {
             </div>
             <div className="flex">
                 <Link to={`/editarpostagem/${postagem.id}`}
-                    className='w-full text-slate-100 bg-rose-400 hover:bg-rose-800 
+                    className='w-full text-slate-100 bg-purple-400 hover:bg-purple-800 
                       flex items-center justify-center py-2'>
                     <button>Editar</button>
                 </Link>
                 <Link to={`/deletarpostagem/${postagem.id}`}
-                    className='text-white bg-red-400 
+                    className='text-white bg-red-300
 	                hover:bg-red-700 w-full flex items-center justify-center'>
                     <button>Deletar</button>
                 </Link>

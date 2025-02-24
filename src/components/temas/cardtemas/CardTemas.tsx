@@ -8,14 +8,14 @@ interface CardTemasProps {
 function CardTemas({ tema }: CardTemasProps) {
     return (
         <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
-            <header className='py-2 px-6 bg-rose-800 text-white font-bold text-2xl'>
+            <header className='py-2 px-6 bg-orange-200 text-black font-bold text-2xl'>
                 Tema
             </header>
-            <p className='p-8 text-3xl bg-slate-200 h-full'>{tema.descricao}</p>
+            <p className='p-8 text-3xl bg-orange-100 h-full'>{tema.descricao}</p>
 
             <div className="flex">
                 <Link to={`/editartema/${tema.id}`}
-                    className='w-full text-slate-100 bg-green-400 hover:bg-rose-800 
+                    className='w-full text-slate-100 bg-green-400 hover:bg-green-800 
                     flex items-center justify-center py-2'>
                     <button>Editar</button>
                 </Link>
