@@ -4,6 +4,7 @@ import Usuario from '../../models/Usuario'
 import { cadastrarUsuario } from '../../services/Service'
 import './Cadastro.css'
 import { RotatingLines } from 'react-loader-spinner'
+import fundoCadastro from 'img/montanhas.png'
 
 function Cadastro() {
 
@@ -69,7 +70,9 @@ function Cadastro() {
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 h-screen 
             place-items-center font-bold bg-orange-100">
-        <div className="fundoCadastro hidden lg:block"></div>
+        <div className="fundoCadastro hidden lg:block">
+          <img src={fundoCadastro}/>
+        </div>
         <form className='flex justify-center items-center flex-col w-2/3 gap-3' 
           onSubmit={cadastrarNovoUsuario}>
           <h2 className='text-purple-900 text-5xl'>Cadastrar</h2>

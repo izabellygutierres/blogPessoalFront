@@ -4,6 +4,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import UsuarioLogin from '../../models/UsuarioLogin';
 import { RotatingLines } from 'react-loader-spinner';
+import fundoLogin from 'img/Pandinha Vermelho.png'
 
 function Login() {
 
@@ -89,7 +90,9 @@ function Login() {
                         </Link>
                     </p>
                 </form>
-                <div className="fundoLogin hidden lg:block"></div>
+                <div className="fundoLogin hidden lg:block">
+                    <img src={fundoLogin}/>
+                </div>
             </div>
         </>
     );

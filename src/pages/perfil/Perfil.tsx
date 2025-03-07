@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import fundoPerfil from "img/fundoPerfil.jpg"
 import { AuthContext } from '../../contexts/AuthContext'
 import { ToastAlerta } from '../../utils/ToastAlerta'
 
@@ -22,7 +22,7 @@ function Perfil() {
 
             <img 
                 className='w-full h-72 object-cover border-b-8 border-white' 
-                src="img/fundoPerfil.jpg" alt="Capa do Perfil" />
+                src={fundoPerfil} alt="Capa do Perfil" />
 
             <img 
                 className='rounded-full w-56 mx-auto mt-[-8rem] border-8 border-white relative z-10' 
