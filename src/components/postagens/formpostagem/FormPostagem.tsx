@@ -76,11 +76,11 @@ function FormPostagem() {
     useEffect(() => {
         setPostagem({
             ...postagem,
-            tema: {id: tema.id,descricao:tema.descricao}
+            tema: { id: tema.id, descricao: tema.descricao }
         })
     }, [tema])
 
-    function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+    function atualizarEstado(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         setPostagem({
             ...postagem,
             [e.target.name]: e.target.value,
@@ -161,14 +161,15 @@ function FormPostagem() {
                 </div>
                 <div className="flex flex-col gap-2">
                     <label htmlFor="titulo">Texto da Postagem</label>
-                    <input
-                        type="text"
+                    <textarea
                         placeholder="Texto"
                         name="texto"
                         required
                         className="border-2 border-rose-700 rounded p-2"
                         value={postagem.texto}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        onChange={(e: ChangeEvent<HTMLTextAreaElement>) => atualizarEstado(e)}
+                        rows={1} // Inicia com uma única linha
+                        style={{ resize: 'vertical', overflow: 'hidden' }} // Permite redimensionamento vertical
                     />
                 </div>
                 <div className="flex flex-col gap-2">

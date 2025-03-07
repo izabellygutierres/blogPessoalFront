@@ -1,49 +1,61 @@
-import { Link } from 'react-router-dom'
-import Postagem from '../../../models/Postagem'
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import Postagem from '../../../models/Postagem';
+import { AuthContext } from '../../../contexts/AuthContext';
 
 interface CardPostagensProps {
-    postagem: Postagem
+    postagem: Postagem;
 }
 
 function CardPostagem({ postagem }: CardPostagensProps) {
-    return (
-        <div className='border-orange-100 border 
-            flex flex-col rounded overflow-hidden justify-between'>
+    const { usuario } = useContext(AuthContext);
+    const isAutor = usuario.id === postagem.usuario?.id;
 
+    return (
+        <div className='border-orange-100 border flex flex-col rounded overflow-hidden justify-between'>
             <div>
                 <div className="flex w-full bg-orange-200 py-2 px-4 items-center gap-4">
                     <img
                         src={postagem.usuario?.foto}
                         className='h-12 rounded-full'
-                        alt={postagem.usuario?.nome} />
+                        alt={postagem.usuario?.nome}
+                    />
                     <h3 className='text-lg font-bold text-center uppercase'>
                         {postagem.usuario?.nome}
                     </h3>
                 </div>
-                <div className='p-4 '>
+                <div className='p-4'>
                     <h4 className='text-lg font-semibold uppercase'>{postagem.titulo}</h4>
-                    <p>{postagem.texto}</p>
-                    <p>Tema: {postagem.tema?.descricao}</p>
-                    <p>Data: {new Intl.DateTimeFormat(undefined, {
-                        dateStyle: 'full',
-                        timeStyle: 'medium',
-                    }).format(new Date(postagem.data))}</p>
+                    <p style={{ whiteSpace: 'pre-wrap' }} className="text-gray-700">
+                        {postagem.texto}
+                    </p>
+                    <p className="text-violet-700 font-bold">Tema: {postagem.tema?.descricao}</p>
+                    <p className="text-pink-500 font-bold">
+                        Data: {new Intl.DateTimeFormat(undefined, {
+                            dateStyle: 'full',
+                            timeStyle: 'medium',
+                        }).format(new Date(postagem.data))}
+                    </p>
                 </div>
             </div>
-            <div className="flex">
-                <Link to={`/editarpostagem/${postagem.id}`}
-                    className='w-full text-slate-100 bg-purple-400 hover:bg-purple-800 
-                      flex items-center justify-center py-2'>
-                    <button>Editar</button>
-                </Link>
-                <Link to={`/deletarpostagem/${postagem.id}`}
-                    className='text-white bg-red-300
-	                hover:bg-red-700 w-full flex items-center justify-center'>
-                    <button>Deletar</button>
-                </Link>
-            </div>
+
+            {/* Mostra os botões apenas se o usuário for o autor */}
+            {isAutor && (
+                <div className="flex">
+                    <Link to={`/editarpostagem/${postagem.id}`}
+                        className='w-full text-slate-100 bg-purple-400 hover:bg-purple-800 
+                          flex items-center justify-center py-2'>
+                        <button>Editar</button>
+                    </Link>
+                    <Link to={`/deletarpostagem/${postagem.id}`}
+                        className='text-white bg-red-300
+                        hover:bg-red-700 w-full flex items-center justify-center'>
+                        <button>Deletar</button>
+                    </Link>
+                </div>
+            )}
         </div>
-    )
+    );
 }
 
-export default CardPostagem
+export default CardPostagem;

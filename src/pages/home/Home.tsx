@@ -23,9 +23,9 @@ function Home() {
 
                     <div className="flex justify-center ">
                         <img
-                            src="img/IlustHomePage.png"
+                            src="img/blogHome.png"
                             alt="Imagem Página Home"
-                            className='w-6/6'
+                            className='w-4/6'
                         />
                     </div>
                 </div>
